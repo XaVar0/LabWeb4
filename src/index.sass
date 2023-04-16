@@ -1,0 +1,45 @@
+$margin: 10px
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap')
+.backColor
+  background-color: #00ADB5 !important
+  color: #FFFFFF !important
+.navbar
+  background-color: #00ADB5 !important
+a
+  color: #FFFFFF !important
+h1,h2,h3,h4
+  font-family: 'Lora', serif
+p
+    font-family: 'Open-Sans', serif
+.mid
+  display: flex
+  justify-content: center
+  align-items: center
+  text-align: center
+
+.marge
+    margin: $margin
+.margeBas
+    margin: 0px,0px,0px,10px
+.margePic
+    margin: 60px
+
+@media (width < 600px)
+  #changeSize
+    display: flex
+    flex-direction: column
+    margin: 20px
+.banner
+    height: 150px
+@media (width < 600px)
+  .banner
+    height: 100px
+.caption
+    height: 250px
+    width: 300px
+
+.profilePicture
+    height: 60px
+body 
+  overflow-x: hidden
