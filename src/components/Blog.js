@@ -1,27 +1,15 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import BlogDetails from "./BlogDetails";
 import AddComment from "./AddComment";
 import CommentList from "./CommentList";
-
+import { useLoaderData } from "react-router-dom";
 function Blog(props){
-    const {id} = useParams();
-    const [itemPost, setElement]  = React.useState({})
-    
-    React.useEffect(() => {
-        fetch(`http://localhost:3000/posts/${id}`)
-        .then(response => response.json())
-        .then(data => {
-            setElement(data);
-        })
-        .catch(error => console.error(error));
-    }, [id]);
-    
+    const { data } = useLoaderData();
     return (
         <div>
-            <BlogDetails key={itemPost.id} title={itemPost.title} picture={itemPost.picture} contain={itemPost.contain} date={itemPost.date} author={itemPost.author}></BlogDetails>
-            <AddComment postId={itemPost.id}/>
-            <CommentList  postId={itemPost.id}/>
+            <BlogDetails key={data.id} title={data.title} picture={data.picture} contain={data.contain} date={data.date} author={data.author}></BlogDetails>
+            <AddComment postId={data.id}/>
+            <CommentList  postId={data.id}/>
         </div>
         )
 }

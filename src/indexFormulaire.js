@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import  {useLoader, Form} from 'react-router-dom'
 function IndexForm(props){
 
   const addPostToIndexedDB = (newPost) => {
@@ -75,14 +76,13 @@ function IndexForm(props){
       });
       addPostToIndexedDB(newPost);
     }
-    window.location.href = 'http://localhost:3001'; 
   };
 
   return (
     <div>
       <Header />
       <div className="container" style={{width: '30rem'}}>
-        <form id="addPostForm" className="mt-4" method="post">
+        <Form id="addPostForm" className="mt-4" method="post" action='/Process'>
           <div className="mb-3">
             <label htmlFor="pictureInput" className="form-label">Image</label>
             <input type="text" className="form-control" id="pictureInput" required onChange={pictureChange}/>
@@ -102,7 +102,7 @@ function IndexForm(props){
           <div className="position-relative">
             <button className="btn btn-dark my-2 my-sm-0 position-absolute end-0" type="button" onClick={submitAction}>Submit</button>
           </div>
-        </form>
+        </Form>
       <br/><br/>
       <Footer/>
       </div>

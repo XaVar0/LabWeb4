@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import {createBrowserRouter, redirect, RouterProvider} from 'react-router-dom';
 import 'react-dom';
 import './components/Header';
 import IndexMain from './indexMain';
@@ -21,7 +21,19 @@ const router = createBrowserRouter([
   },
   {
     path : "/Details/:id",
+    loader: async({params})=>{
+      const response = await fetch(`http://localhost:3000/posts/${params.id}`);
+      const data = await response.json();
+      return { data };
+    },
     element: <IndexBlog/>
+  },
+  {
+    path : "/Process",
+    action: async({request}) =>{
+      let formData = await request.formData();
+      return redirect('/')
+    },
   },
   {
     path : "/HiddedFormulaire",
